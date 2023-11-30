@@ -50,7 +50,7 @@ def upload_file():
       cv2.imwrite(ofilename, gray)
       
       # perform OCR on the processed image
-      text = pytesseract.image_to_string(Image.open(ofilename))
+      text = pytesseract.image_to_string(Image.open(ofilename),config=r'-c tessedit_char_blacklist=abcdefghijklmnopqrstuvwxyz/ --psm 6')
       
       # remove the processed image
       os.remove(ofilename)
